@@ -49,6 +49,32 @@ $app->get('/api/brand/{id}', function(Request $request, Response $response){
 
 });
 
+// Add Single Brand
+$app->post('/api/brand/add', function(Request $request, Response $response){
+    
+        $brand_name =$request->getParam('brand_name');
+        
+        $sql = "INSERT INTO brands (brand_name) VALUES (:brand_name) ";
+        try{
+            // Get the DB Objects
+            $db = new db();
+            // Connect to DB
+            $db = $db->connect();
+    
+            $stmt = $db->prepare($sql);
+    
+            $stmt->bindParam(':brand_name',$brand_name);
+            
+            $stmt->execute();
+            echo  '{"notice": {"text": "Brand Added"}';
+    
+        }
+        catch(PDOException $e){
+            echo '{"error": {"text": '.$e->getMessage().' }';
+        }
+    
+    });
+
 // Edit/Update Single Brand
 
 $app->put('/api/brand/update/{id}', function(Request $request, Response $response){

@@ -1,10 +1,10 @@
 # slimrest_api
 REST API using Slim Micro framework and MySQL
 
-###Version
+#Version
 1.0.0
 
-###Usage
+#Usage
 Installation
 Create database or import from sql/restapi.sql
 
